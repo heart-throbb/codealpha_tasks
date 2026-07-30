@@ -15,7 +15,6 @@ function App() {
     <div className="bg-gray-200 min-h-screen">
       <Routes>
         <Route path="/" element={<Welcome />} />
-
         <Route
           path="/home"
           element={
@@ -24,11 +23,8 @@ function App() {
             </ProtectedRoute>
           }
         />
-
         <Route path="/login" element={<Login />} />
-
         <Route path="/register" element={<Register />} />
-
         <Route
           path="/profile/:id"
           element={
@@ -37,7 +33,6 @@ function App() {
             </ProtectedRoute>
           }
         />
-
         <Route
           path="/settings"
           element={
@@ -46,7 +41,6 @@ function App() {
             </ProtectedRoute>
           }
         />
-
         <Route
           path="/users"
           element={

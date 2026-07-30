@@ -1,8 +1,5 @@
 const Post = require("../models/Post");
 
-/**
- * Create Post
- */
 exports.createPost = async (req, res) => {
   try {
     const { caption, image } = req.body;
@@ -40,9 +37,6 @@ exports.createPost = async (req, res) => {
   }
 };
 
-/**
- * Get All Posts (Feed)
- */
 exports.getAllPosts = async (req, res) => {
   try {
     const posts = await Post.find()
@@ -63,9 +57,6 @@ exports.getAllPosts = async (req, res) => {
   }
 };
 
-/**
- * Get Single Post
- */
 exports.getPostById = async (req, res) => {
   try {
     const post = await Post.findById(req.params.id)
@@ -91,9 +82,6 @@ exports.getPostById = async (req, res) => {
   }
 };
 
-/**
- * Update Post
- */
 exports.updatePost = async (req, res) => {
   try {
     const { caption, image } = req.body;
@@ -138,9 +126,6 @@ exports.updatePost = async (req, res) => {
   }
 };
 
-/**
- * Delete Post
- */
 exports.deletePost = async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
@@ -173,9 +158,6 @@ exports.deletePost = async (req, res) => {
   }
 };
 
-/**
- * Like / Unlike Post
- */
 exports.likePost = async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);

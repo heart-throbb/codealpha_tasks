@@ -3,9 +3,6 @@ const bcrypt = require("bcryptjs");
 const path = require("path");
 const fs = require("fs");
 
-/**
- * Get Logged-in User
- */
 exports.getMyProfile = async (req, res) => {
   try {
     const user = await User.findById(req.user.id)
@@ -32,9 +29,6 @@ exports.getMyProfile = async (req, res) => {
   }
 };
 
-/**
- * Get User By ID
- */
 exports.getUserById = async (req, res) => {
   try {
     const user = await User.findById(req.params.id)
@@ -61,9 +55,6 @@ exports.getUserById = async (req, res) => {
   }
 };
 
-/**
- * Get All Users
- */
 exports.getAllUsers = async (req, res) => {
   try {
     const users = await User.find().select("-password");
@@ -81,9 +72,6 @@ exports.getAllUsers = async (req, res) => {
   }
 };
 
-/**
- * Update Profile
- */
 exports.updateProfile = async (req, res) => {
   try {
     const { username, bio, profilePicture } = req.body;
@@ -118,9 +106,6 @@ exports.updateProfile = async (req, res) => {
   }
 };
 
-/**
- * Upload Profile Picture
- */
 exports.uploadProfilePicture = async (req, res) => {
   try {
     if (!req.file) {
@@ -165,9 +150,6 @@ exports.uploadProfilePicture = async (req, res) => {
   }
 };
 
-/**
- * Change Password
- */
 exports.changePassword = async (req, res) => {
   try {
     const { currentPassword, newPassword } = req.body;
@@ -220,9 +202,6 @@ exports.changePassword = async (req, res) => {
   }
 };
 
-/**
- * Follow / Unfollow User
- */
 exports.followUser = async (req, res) => {
   try {
     if (req.user.id === req.params.id) {

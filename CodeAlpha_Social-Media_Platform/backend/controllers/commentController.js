@@ -1,9 +1,6 @@
 const Comment = require("../models/Comment");
 const Post = require("../models/Post");
 
-/**
- * Create Comment
- */
 exports.createComment = async (req, res) => {
   try {
     const { postId, comment } = req.body;
@@ -50,9 +47,6 @@ exports.createComment = async (req, res) => {
   }
 };
 
-/**
- * Get Comments of a Post
- */
 exports.getCommentsByPost = async (req, res) => {
   try {
     const comments = await Comment.find({
@@ -74,9 +68,7 @@ exports.getCommentsByPost = async (req, res) => {
   }
 };
 
-/**
- * Delete Comment
- */
+
 exports.deleteComment = async (req, res) => {
   try {
     const comment = await Comment.findById(req.params.id);
