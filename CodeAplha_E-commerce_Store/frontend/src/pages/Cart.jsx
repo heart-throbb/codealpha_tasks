@@ -11,7 +11,7 @@ const Cart = () => {
     if (userInfo) {
       navigate("/checkout");
     } else {
-      navigate("/login?redirect=checkout"); // simple redirect to login first
+      navigate("/login?redirect=checkout"); 
     }
   };
 
