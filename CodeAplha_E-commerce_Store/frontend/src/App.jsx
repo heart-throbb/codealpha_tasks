@@ -17,6 +17,7 @@ import AdminProducts from "./pages/admin/AdminProducts";
 import AdminOrders from "./pages/admin/AdminOrders";
 import AdminUsers from "./pages/admin/AdminUsers";
 import { CartProvider } from "./context/CartContext";
+import { NotificationProvider } from "./context/NotificationContext";
 
 const AdminRoute = ({ children }) => {
   const userInfo = JSON.parse(localStorage.getItem("userInfo"));
@@ -28,96 +29,98 @@ const AdminRoute = ({ children }) => {
 
 function App() {
   return (
-    <CartProvider>
-      <Router>
-        <div className="min-h-screen bg-gray-50 font-sans">
-          <Navbar />
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <main className="container mx-auto px-4 py-8">
-                  <Home />
-                </main>
-              }
-            />
-            <Route
-              path="/product/:id"
-              element={
-                <main className="container mx-auto px-4 py-8">
-                  <ProductDetails />
-                </main>
-              }
-            />
-            <Route
-              path="/cart"
-              element={
-                <main className="container mx-auto px-4 py-8">
-                  <Cart />
-                </main>
-              }
-            />
-            <Route
-              path="/checkout"
-              element={
-                <main className="container mx-auto px-4 py-8">
-                  <Checkout />
-                </main>
-              }
-            />
-            <Route
-              path="/login"
-              element={
-                <main className="container mx-auto px-4 py-8">
-                  <Login />
-                </main>
-              }
-            />
-            <Route
-              path="/register"
-              element={
-                <main className="container mx-auto px-4 py-8">
-                  <Register />
-                </main>
-              }
-            />
+    <NotificationProvider>
+      <CartProvider>
+        <Router>
+          <div className="min-h-screen bg-gray-50 font-sans">
+            <Navbar />
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <main className="container mx-auto px-4 py-8">
+                    <Home />
+                  </main>
+                }
+              />
+              <Route
+                path="/product/:id"
+                element={
+                  <main className="container mx-auto px-4 py-8">
+                    <ProductDetails />
+                  </main>
+                }
+              />
+              <Route
+                path="/cart"
+                element={
+                  <main className="container mx-auto px-4 py-8">
+                    <Cart />
+                  </main>
+                }
+              />
+              <Route
+                path="/checkout"
+                element={
+                  <main className="container mx-auto px-4 py-8">
+                    <Checkout />
+                  </main>
+                }
+              />
+              <Route
+                path="/login"
+                element={
+                  <main className="container mx-auto px-4 py-8">
+                    <Login />
+                  </main>
+                }
+              />
+              <Route
+                path="/register"
+                element={
+                  <main className="container mx-auto px-4 py-8">
+                    <Register />
+                  </main>
+                }
+              />
 
-            <Route
-              path="/admin"
-              element={
-                <AdminRoute>
-                  <AdminDashboard />
-                </AdminRoute>
-              }
-            />
-            <Route
-              path="/admin/products"
-              element={
-                <AdminRoute>
-                  <AdminProducts />
-                </AdminRoute>
-              }
-            />
-            <Route
-              path="/admin/orders"
-              element={
-                <AdminRoute>
-                  <AdminOrders />
-                </AdminRoute>
-              }
-            />
-            <Route
-              path="/admin/users"
-              element={
-                <AdminRoute>
-                  <AdminUsers />
-                </AdminRoute>
-              }
-            />
-          </Routes>
-        </div>
-      </Router>
-    </CartProvider>
+              <Route
+                path="/admin"
+                element={
+                  <AdminRoute>
+                    <AdminDashboard />
+                  </AdminRoute>
+                }
+              />
+              <Route
+                path="/admin/products"
+                element={
+                  <AdminRoute>
+                    <AdminProducts />
+                  </AdminRoute>
+                }
+              />
+              <Route
+                path="/admin/orders"
+                element={
+                  <AdminRoute>
+                    <AdminOrders />
+                  </AdminRoute>
+                }
+              />
+              <Route
+                path="/admin/users"
+                element={
+                  <AdminRoute>
+                    <AdminUsers />
+                  </AdminRoute>
+                }
+              />
+            </Routes>
+          </div>
+        </Router>
+      </CartProvider>
+    </NotificationProvider>
   );
 }
 

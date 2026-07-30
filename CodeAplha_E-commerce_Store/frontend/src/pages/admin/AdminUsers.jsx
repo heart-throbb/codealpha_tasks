@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import { Trash2, ShieldCheck, ShieldOff } from "lucide-react";
+import { useNotification } from "../../context/NotificationContext";
 
 const getAuthHeader = () => {
   const userInfo = JSON.parse(localStorage.getItem("userInfo"));
@@ -10,6 +11,7 @@ const getAuthHeader = () => {
 const AdminUsers = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { showNotification } = useNotification();
 
   const fetchUsers = useCallback(async () => {
     try {
@@ -38,14 +40,17 @@ const AdminUsers = () => {
       );
       setUsers((prev) => prev.filter((u) => u._id !== id));
     } catch (err) {
-      alert(err.response?.data?.message || "Error deleting user");
+      showNotification(
+        err.response?.data?.message || "Error deleting user",
+        "error",
+      );
     }
   };
 
   const handleRole = async (user) => {
     const currentUser = JSON.parse(localStorage.getItem("userInfo"));
     if (!currentUser?.isMainAdmin) {
-      alert("Only the main admin can change user roles.");
+      showNotification("Only the main admin can change user roles.", "error");
       return;
     }
     if (user._id === currentUser._id) return;
@@ -65,7 +70,10 @@ const AdminUsers = () => {
         prev.map((u) => (u._id === user._id ? { ...u, isAdmin: newRole } : u)),
       );
     } catch (err) {
-      alert(err.response?.data?.message || "Error updating role");
+      showNotification(
+        err.response?.data?.message || "Error updating role",
+        "error",
+      );
     }
   };
 

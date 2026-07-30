@@ -200,7 +200,7 @@ const seedDatabase = async () => {
     await User.deleteMany();
 
     const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash("admin@123321", salt);
+    const hashedPassword = await bcrypt.hash("admin", salt);
 
     await User.create({
       name: "Admin User",

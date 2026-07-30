@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Trash2, Edit, Plus, X, Save } from "lucide-react";
+import { useNotification } from "../../context/NotificationContext";
 
 const getAuthHeader = () => {
   const userInfo = JSON.parse(localStorage.getItem("userInfo"));
@@ -23,6 +24,7 @@ const AdminProducts = () => {
   const [editingProduct, setEditingProduct] = useState(null);
   const [form, setForm] = useState(emptyForm);
   const [saving, setSaving] = useState(false);
+  const { showNotification } = useNotification();
 
   const fetchProducts = async () => {
     try {
@@ -76,7 +78,10 @@ const AdminProducts = () => {
       setShowModal(false);
       fetchProducts();
     } catch (err) {
-      alert(err.response?.data?.message || "Error saving product");
+      showNotification(
+        err.response?.data?.message || "Error saving product",
+        "error",
+      );
     } finally {
       setSaving(false);
     }
@@ -92,7 +97,10 @@ const AdminProducts = () => {
       );
       setProducts((prev) => prev.filter((p) => p._id !== id));
     } catch (err) {
-      alert(err.response?.data?.message || "Error deleting product");
+      showNotification(
+        err.response?.data?.message || "Error deleting product",
+        "error",
+      );
     }
   };
 
