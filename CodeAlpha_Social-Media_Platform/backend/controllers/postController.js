@@ -1,4 +1,10 @@
 const Post = require("../models/Post");
+const Comment = require("../models/Comment");
+
+const withCommentCount = async (post) => {
+  const commentCount = await Comment.countDocuments({ post: post._id });
+  return { ...post.toObject(), commentCount };
+};
 
 exports.createPost = async (req, res) => {
   try {
@@ -22,10 +28,12 @@ exports.createPost = async (req, res) => {
       "username profilePicture",
     );
 
+    const postWithCommentCount = await withCommentCount(populatedPost);
+
     res.status(201).json({
       success: true,
       message: "Post created successfully",
-      post: populatedPost,
+      post: postWithCommentCount,
     });
   } catch (error) {
     console.log(error);
@@ -44,10 +52,14 @@ exports.getAllPosts = async (req, res) => {
       .populate("likes", "username")
       .sort({ createdAt: -1 });
 
+    const postsWithCommentCount = await Promise.all(
+      posts.map((post) => withCommentCount(post)),
+    );
+
     res.json({
       success: true,
-      count: posts.length,
-      posts,
+      count: postsWithCommentCount.length,
+      posts: postsWithCommentCount,
     });
   } catch (error) {
     res.status(500).json({
@@ -70,9 +82,11 @@ exports.getPostById = async (req, res) => {
       });
     }
 
+    const postWithCommentCount = await withCommentCount(post);
+
     res.json({
       success: true,
-      post,
+      post: postWithCommentCount,
     });
   } catch (error) {
     res.status(500).json({
@@ -113,10 +127,12 @@ exports.updatePost = async (req, res) => {
       "username profilePicture",
     );
 
+    const postWithCommentCount = await withCommentCount(updated);
+
     res.json({
       success: true,
       message: "Post updated",
-      post: updated,
+      post: postWithCommentCount,
     });
   } catch (error) {
     res.status(500).json({
@@ -206,9 +222,13 @@ exports.getPostsByUser = async (req, res) => {
       .populate("user", "username profilePicture")
       .sort({ createdAt: -1 });
 
+    const postsWithCommentCount = await Promise.all(
+      posts.map((post) => withCommentCount(post)),
+    );
+
     res.json({
       success: true,
-      posts,
+      posts: postsWithCommentCount,
     });
   } catch (err) {
     res.status(500).json({

@@ -135,7 +135,7 @@ function Register() {
                     placeholder="Choose a username"
                     value={form.username}
                     onChange={handleChange}
-                    className="w-full rounded-2xl border border-slate-200 bg-white py-3 pl-11 pr-4 text-slate-700 shadow-sm outline-none transition focus:border-fuchsia-500 focus:ring-2 focus:ring-fuchsia-100"
+                    className="w-full rounded-2xl border border-slate-300 bg-gray-200 py-3 pl-11 pr-4 text-slate-700 shadow-lg outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
                     required
                     disabled={loading}
                   />
@@ -162,7 +162,7 @@ function Register() {
                     placeholder="you@example.com"
                     value={form.email}
                     onChange={handleChange}
-                    className="w-full rounded-2xl border border-slate-200 bg-white py-3 pl-11 pr-4 text-slate-700 shadow-sm outline-none transition focus:border-fuchsia-500 focus:ring-2 focus:ring-fuchsia-100"
+                    className="w-full rounded-2xl border border-slate-300 bg-gray-200 py-3 pl-11 pr-4 text-slate-700 shadow-lg outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
                     required
                     disabled={loading}
                   />
@@ -189,14 +189,14 @@ function Register() {
                     placeholder="Create a password"
                     value={form.password}
                     onChange={handleChange}
-                    className="w-full rounded-2xl border border-slate-200 bg-white py-3 pl-11 pr-11 text-slate-700 shadow-sm outline-none transition focus:border-fuchsia-500 focus:ring-2 focus:ring-fuchsia-100"
+                    className="w-full rounded-2xl border border-slate-300 bg-gray-200 py-3 pl-11 pr-11 text-slate-700 shadow-lg outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
                     required
                     disabled={loading}
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword((value) => !value)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 rounded-lg p-1.5 text-slate-400 transition hover:bg-slate-100 hover:text-slate-600"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 rounded-lg p-1.5 text-slate-400 transition hover:bg-gray-300 hover:text-slate-600 hover:cursor-pointer"
                     aria-label={
                       showPassword ? "Hide password" : "Show password"
                     }
@@ -226,14 +226,14 @@ function Register() {
                     placeholder="Confirm your password"
                     value={form.confirmPassword}
                     onChange={handleChange}
-                    className="w-full rounded-2xl border border-slate-200 bg-white py-3 pl-11 pr-11 text-slate-700 shadow-sm outline-none transition focus:border-fuchsia-500 focus:ring-2 focus:ring-fuchsia-100"
+                    className="w-full rounded-2xl border border-slate-300 bg-gray-200 py-3 pl-11 pr-11 text-slate-700 shadow-lg outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
                     required
                     disabled={loading}
                   />
                   <button
                     type="button"
                     onClick={() => setShowConfirmPassword((value) => !value)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 rounded-lg p-1.5 text-slate-400 transition hover:bg-slate-100 hover:text-slate-600"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 rounded-lg p-1.5 text-slate-400 transition hover:bg-gray-300 hover:text-slate-600 hover:cursor-pointer"
                     aria-label={
                       showConfirmPassword ? "Hide password" : "Show password"
                     }

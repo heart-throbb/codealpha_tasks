@@ -127,7 +127,7 @@ function Login() {
                     placeholder="you@example.com"
                     value={form.email}
                     onChange={handleChange}
-                    className="w-full rounded-2xl border border-slate-200 bg-white py-3 pl-11 pr-4 text-slate-700 shadow-sm outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+                    className="w-full rounded-2xl border border-slate-200 bg-gray-100 py-3 pl-11 pr-4 text-slate-700 shadow-sm outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
                     required
                     disabled={loading}
                   />
@@ -154,7 +154,7 @@ function Login() {
                     placeholder="Enter your password"
                     value={form.password}
                     onChange={handleChange}
-                    className="w-full rounded-2xl border border-slate-200 bg-white py-3 pl-11 pr-11 text-slate-700 shadow-sm outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+                    className="w-full rounded-2xl border border-slate-200 bg-gray-100 py-3 pl-11 pr-11 text-slate-700 shadow-sm outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
                     required
                     disabled={loading}
                   />
